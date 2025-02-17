@@ -1,0 +1,18 @@
+<IfModule mod_rewrite.c>
+# Clean URLs
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+
+# Deny acces to the .git directory
+RewriteRule (^|/).git(/|$) - [F]
+</IfModule>
+
+# Deny access to hidden files
+<FilesMatch "^\.">
+Order allow,deny
+Deny from all
+</FilesMatch>
