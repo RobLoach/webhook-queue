@@ -40,7 +40,7 @@ if (!storage()->exists(_env('FILE', FILE))) {
 }
 
 // Webhook
-app()->get('/webhook', function() {
+app()->post('/webhook', function() {
     $token = request()->get('token');
     if (!$token) {
         response()->json([
